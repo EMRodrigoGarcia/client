@@ -97,7 +97,7 @@ void ProcessDirectoryJob::process()
         return;
     }
 
-    for (auto &e : _localNormalQueryEntries) {
+    for (const auto &e : _localNormalQueryEntries) {
         entries[e.name].localEntry = e;
     }
     if (isVfsWithSuffix()) {

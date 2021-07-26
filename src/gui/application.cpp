@@ -278,8 +278,6 @@ Application::Application(int &argc, char **argv)
         }
     }
 
-    FolderMan::instance()->setSyncEnabled(true);
-
     setQuitOnLastWindowClosed(false);
 
     _theme->setSystrayUseMonoIcons(cfg.monoIcons());
@@ -292,7 +290,6 @@ Application::Application(int &argc, char **argv)
         _gui->slotShowSettings();
     }
 
-    FolderMan::instance()->setupFolders();
     _proxy.setupQtProxyFromConfig(); // folders have to be defined first, than we set up the Qt proxy.
 
     // Enable word wrapping of QInputDialog (#4197)
@@ -378,6 +375,9 @@ void Application::slotAccountStateAdded(AccountState *accountState)
         _folderManager.data(), &FolderMan::slotAccountStateChanged);
     connect(accountState->account().data(), &Account::serverVersionChanged,
         _folderManager.data(), &FolderMan::slotServerVersionChanged);
+
+    FolderMan::instance()->setSyncEnabled(true);
+    FolderMan::instance()->setupFolders();
 
     _gui->slotTrayMessageIfServerUnsupported(accountState->account().data());
 }
