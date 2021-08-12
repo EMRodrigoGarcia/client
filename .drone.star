@@ -42,7 +42,7 @@ def main(ctx):
             trigger = build_trigger,
         ),
         gui_tests(ctx, trigger = build_trigger, filterTags = ["@smokeTest"], version = "latest"),
-        gui_tests(ctx, trigger = build_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"], version = "latest"),
+        # gui_tests(ctx, trigger = build_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"], version = "latest"),
         notification(
             name = "build",
             trigger = build_trigger,
@@ -205,6 +205,7 @@ def gui_tests(ctx, trigger = {}, depends_on = [], filterTags = [], version = "da
                          "image": "docker:git",
                          "commands": [
                              "git submodule update --init --recursive",
+                             "mkdir /drone/src/test/guiTestReport",
                          ],
                      },
                  ] +
@@ -526,4 +527,3 @@ def showGuiTestResult():
             "python /drone/src/test/gui/TestLogParser.py /drone/src/test/guiTestReport/reports.json",
         ],
     }]
-    
