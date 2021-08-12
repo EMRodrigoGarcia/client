@@ -72,7 +72,7 @@ def main(ctx):
             trigger = cron_trigger,
         ),
         gui_tests(ctx, trigger = cron_trigger, filterTags = ["@smokeTest"]),
-        gui_tests(ctx, trigger = cron_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"]),
+        # gui_tests(ctx, trigger = cron_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"]),
     ]
 
     if ctx.build.event == "cron":
@@ -185,7 +185,7 @@ def build_and_test_client(ctx, c_compiler, cxx_compiler, build_type, generator, 
 def gui_tests(ctx, trigger = {}, depends_on = [], filterTags = [], version = "daily-master-qa"):
     pipeline_name = "GUI-tests"
     build_dir = "build-" + pipeline_name
-    squish_parameters = "--retry 1"
+    squish_parameters = "--retry 1 --reportgen stdout --reportgen json,/drone/src/test/guiTestReport"
 
     if (len(filterTags) > 0):
         for tags in filterTags:
@@ -227,7 +227,8 @@ def gui_tests(ctx, trigger = {}, depends_on = [], filterTags = [], version = "da
                              "SQUISH_PARAMETERS": squish_parameters,
                          },
                      },
-                 ],
+                 ] +
+                 showGuiTestResult(),
         "services": testMiddleware() +
                     owncloudService() +
                     databaseService(),
@@ -515,3 +516,14 @@ def fixPermissions():
             "chown www-data * -R",
         ],
     }]
+
+def showGuiTestResult():
+    return [{
+        "name": "show-gui-test-result",
+        "image": "python",
+        "pull": "always",
+        "commands": [
+            "python /drone/src/test/gui/TestLogParser.py /drone/src/test/guiTestReport/reports.json",
+        ],
+    }]
+    

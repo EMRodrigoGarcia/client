@@ -15,7 +15,7 @@ Feature: Syncing files
             test content
             """
         And the user waits for file "lorem-for-upload.txt" to be synced
-        Then as "Alice" the file "lorem-for-upload.txt" on the server should have the content "test content"
+        Then as "Alice" the file "lorem-for-upload.txt" on the server should have the content "test content wxyz"
 
     Scenario: Syncing a file from the server
         Given user "Alice" has set up a client with default settings
