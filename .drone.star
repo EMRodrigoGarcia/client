@@ -227,13 +227,21 @@ def gui_tests(ctx, trigger = {}, depends_on = [], filterTags = [], version = "da
                              "SQUISH_PARAMETERS": squish_parameters,
                          },
                      },
-                 ] +
-                 showGuiTestResult(),
+                 ],
         "services": testMiddleware() +
                     owncloudService() +
                     databaseService(),
         "trigger": trigger,
         "depends_on": depends_on,
+        "when": {
+            "status": {
+                "failure": {
+                    "steps": [
+                        showGuiTestResult(),
+                    ],
+                },
+            },
+        },
     }
 
 def build_client(ctx, c_compiler, cxx_compiler, build_type, generator, build_command, build_dir):
