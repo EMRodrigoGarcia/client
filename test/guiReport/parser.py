@@ -5,9 +5,23 @@ def traverse_loop(data):
     # logSize = len(data["tests"][0]["tests"])
     # print(logSize)
     
-    for i in  data["tests"][0]["tests"]:
+    for feature_file in  data["tests"][0]["tests"]:
         # Loop level 0 where we loop inside the tets suite
-        print(str(i['name']), " has len ", str(len(i['tests'])))
+        print(str(feature_file['name']), " has len ", str(len(feature_file['tests'])))
+        for feature in feature_file['tests']:
+            print(str(feature['name']), " has len ", str(len(feature['tests'])))
+            for scenario in feature['tests']:
+                if("tests" not in scenario): break
+                print(str(scenario['name']), " has len ", str(len(scenario['tests'])))
+                for test_step in scenario['tests']:
+                    if("tests" not in test_step): break
+                    print(str(test_step['name']), " has len ", str(len(test_step['tests'])))
+                    print("Recursive call********************************************************************************")
+
+
+
+
+
 
     # print(data["tests"][0]["tests"][1]["tests"][0]["tests"][0]["tests"][5]["tests"][0])
 
