@@ -205,7 +205,6 @@ def gui_tests(ctx, trigger = {}, depends_on = [], filterTags = [], version = "da
                          "image": "docker:git",
                          "commands": [
                              "git submodule update --init --recursive",
-                             "mkdir /drone/src/test/guiTestReport",
                          ],
                      },
                  ] +
@@ -515,6 +514,8 @@ def fixPermissions():
         "commands": [
             "cd /drone/src/server",
             "chown www-data * -R",
+            "mkdir /drone/src/test/guiTestReport",
+            "chmod ugo+rwx /drone/src/test/guiTestReport",
         ],
     }]
 
