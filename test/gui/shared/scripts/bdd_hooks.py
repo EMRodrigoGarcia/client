@@ -33,6 +33,9 @@ def hook(context):
         'clientSyncPath': os.environ.get(
             'CLIENT_SYNC_PATH', cfg.get('DEFAULT', 'CLIENT_SYNC_PATH')
         ),
+        'clientSyncPathUser': os.environ.get(
+            'CLIENT_SYNC_PATH_USER', cfg.get('DEFAULT', 'CLIENT_SYNC_PATH_USER')
+        ),
         'clientSyncTimeout': os.environ.get(
             'CLIENT_SYNC_TIMEOUT', cfg.get('DEFAULT', 'CLIENT_SYNC_TIMEOUT')
         ),
@@ -48,6 +51,8 @@ def hook(context):
         context.userData['localBackendUrl'] = 'https://localhost:9200'
     if context.userData['clientSyncPath'] == '':
         context.userData['clientSyncPath'] = '/tmp/client-bdd/'
+    if context.userData['clientSyncPathUser'] == '':
+        context.userData['clientSyncPath'] = '/tmp/client-bdd-user/'
     else:
         context.userData['clientSyncPath'] = (
             context.userData['clientSyncPath'].rstrip("/") + "/"

@@ -22,9 +22,9 @@ Feature: adding accounts
         Given user "Brian" has been created on the server with default attributes and without skeleton files
         And user "Alice" has set up a client with default settings
         When the user adds an account with
-            | server      | %local_server%     |
-            | user        | Brian              |
-            | password    | AaBb2Cc3Dd4        |
-            | localfolder | %client_sync_path% |
+          | server      | %local_server%          |
+          | user        | Brian                   |
+          | password    | AaBb2Cc3Dd4             |
+          | localfolder | %client_sync_path_user% |
         Then an account should be displayed with the displayname Alice Hansen and host %local_server_hostname%
         And an account should be displayed with the displayname Brian Murphy and host %local_server_hostname%
