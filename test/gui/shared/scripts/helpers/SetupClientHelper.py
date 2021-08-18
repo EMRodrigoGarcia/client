@@ -8,9 +8,9 @@ confFilePath = confdir + 'owncloud.cfg'
 
 def substituteInLineCodes(context, value):
     value = value.replace('%local_server%', context.userData['localBackendUrl'])
-    value = value.replace('%client_sync_path%', context.userData['clientSyncPath'])
+    value = value.replace('%client_sync_path_user1%', context.userData['clientSyncPathUser1'])
     value = value.replace(
-        '%client_sync_path_user%', context.userData['clientSyncPathUser']
+        '%client_sync_path_user2%', context.userData['clientSyncPathUser2']
     )
     value = value.replace(
         '%local_server_hostname%', urlparse(context.userData['localBackendUrl']).netloc
@@ -31,6 +31,7 @@ def getClientDetails(context):
         elif row[0] == 'localfolder':
             localfolder = row[1]
         try:
+            print(localfolder)
             os.makedirs(localfolder, 0o0755)
         except:
             pass
@@ -81,7 +82,7 @@ def setUpClient(context, username, displayName, confFilePath):
         'displayUserName': displayName,
         'davUserName': userFirstName[0].lower(),
         'displayUserFirstName': userFirstName[0],
-        'client_sync_path': context.userData['clientSyncPath'],
+        'client_sync_path': context.userData['clientSyncPathUser1'],
         'local_server': context.userData['localBackendUrl'],
     }
     userSetting = userSetting.format(**args)

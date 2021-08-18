@@ -30,11 +30,11 @@ def hook(context):
         'localBackendUrl': os.environ.get(
             'BACKEND_HOST', cfg.get('DEFAULT', 'BACKEND_HOST')
         ),
-        'clientSyncPath': os.environ.get(
-            'CLIENT_SYNC_PATH', cfg.get('DEFAULT', 'CLIENT_SYNC_PATH')
+        'clientSyncPathUser1': os.environ.get(
+            'CLIENT_SYNC_PATH_USER1', cfg.get('DEFAULT', 'CLIENT_SYNC_PATH_USER1')
         ),
-        'clientSyncPathUser': os.environ.get(
-            'CLIENT_SYNC_PATH_USER', cfg.get('DEFAULT', 'CLIENT_SYNC_PATH_USER')
+        'clientSyncPathUser2': os.environ.get(
+            'CLIENT_SYNC_PATH_USER2', cfg.get('DEFAULT', 'CLIENT_SYNC_PATH_USER2')
         ),
         'clientSyncTimeout': os.environ.get(
             'CLIENT_SYNC_TIMEOUT', cfg.get('DEFAULT', 'CLIENT_SYNC_TIMEOUT')
@@ -49,13 +49,17 @@ def hook(context):
 
     if context.userData['localBackendUrl'] == '':
         context.userData['localBackendUrl'] = 'https://localhost:9200'
-    if context.userData['clientSyncPath'] == '':
-        context.userData['clientSyncPath'] = '/tmp/client-bdd/'
-    if context.userData['clientSyncPathUser'] == '':
-        context.userData['clientSyncPath'] = '/tmp/client-bdd-user/'
+    if context.userData['clientSyncPathUser1'] == '':
+        context.userData['clientSyncPathUser1'] = '/tmp/client-bdd-user1/'
     else:
-        context.userData['clientSyncPath'] = (
-            context.userData['clientSyncPath'].rstrip("/") + "/"
+        context.userData['clientSyncPathUser1'] = (
+            context.userData['clientSyncPathUser1'].rstrip("/") + "/"
+        )  # make sure there is always one trailing slash
+    if context.userData['clientSyncPathUser2'] == '':
+        context.userData['clientSyncPathUser2'] = '/tmp/client-bdd-user2/'
+    else:
+        context.userData['clientSyncPathUser2'] = (
+            context.userData['clientSyncPathUser2'].rstrip("/") + "/"
         )  # make sure there is always one trailing slash
     if context.userData['clientSyncTimeout'] == '':
         context.userData['clientSyncTimeout'] = 60
@@ -64,8 +68,11 @@ def hook(context):
             context.userData['clientSyncTimeout']
         )
 
-    if not os.path.exists(context.userData['clientSyncPath']):
-        os.makedirs(context.userData['clientSyncPath'])
+    if not os.path.exists(context.userData['clientSyncPathUser1']):
+        os.makedirs(context.userData['clientSyncPathUser1'])
+        
+    if not os.path.exists(context.userData['clientSyncPathUser2']):
+        os.makedirs(context.userData['clientSyncPathUser2'])    
 
     if context.userData['middlewareUrl'] == '':
         context.userData['middlewareUrl'] = 'http://localhost:3000/'
@@ -94,9 +101,9 @@ def hook(context):
         snooze(5)  # ToDo wait smarter till the app died
 
     # delete local files/folders
-    for filename in os.listdir(context.userData['clientSyncPath']):
+    for filename in os.listdir(context.userData['clientSyncPathUser1']):
         test.log("Deleting :" + filename)
-        file_path = os.path.join(context.userData['clientSyncPath'], filename)
+        file_path = os.path.join(context.userData['clientSyncPathUser1'], filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
