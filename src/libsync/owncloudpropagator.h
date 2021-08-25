@@ -481,8 +481,8 @@ public:
                 },
                 Qt::QueuedConnection);
 
-            // Give asynchronous abort 5000 msec to finish on its own
-            QTimer::singleShot(5000, this, &OwncloudPropagator::abortTimeout);
+            // Give asynchronous abort 5 sec to finish on its own
+            QTimer::singleShot(5s, this, &OwncloudPropagator::abortTimeout);
         } else {
             // No root job, call emitFinished
             emitFinished(SyncFileItem::NormalError);

@@ -186,7 +186,7 @@ void CredentialJob::start()
             // (Issues #4274 and #6522)
             // (For kwallet, the error is OtherError instead of NoBackendAvailable, maybe a bug in QtKeychain)
             qCInfo(lcCredentaislManager) << "Backend unavailable (yet?) Retrying in a few seconds." << _job->errorString();
-            QTimer::singleShot(10000, this, &CredentialJob::start);
+            QTimer::singleShot(10s, this, &CredentialJob::start);
             _retryOnKeyChainError = false;
         }
 #endif
