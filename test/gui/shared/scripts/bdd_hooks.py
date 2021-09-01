@@ -70,9 +70,9 @@ def hook(context):
 
     if not os.path.exists(context.userData['clientSyncPathUser1']):
         os.makedirs(context.userData['clientSyncPathUser1'])
-        
+
     if not os.path.exists(context.userData['clientSyncPathUser2']):
-        os.makedirs(context.userData['clientSyncPathUser2'])    
+        os.makedirs(context.userData['clientSyncPathUser2'])
 
     if context.userData['middlewareUrl'] == '':
         context.userData['middlewareUrl'] = 'http://localhost:3000/'

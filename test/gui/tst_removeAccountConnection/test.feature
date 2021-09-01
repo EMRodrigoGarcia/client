@@ -13,7 +13,7 @@ Feature: remove account connection
       | server      | %local_server%          |
       | user        | Brian                   |
       | password    | AaBb2Cc3Dd4             |
-      | localfolder | %client_sync_path_user% |
+      | localfolder | %client_sync_path_user2% |
     When the user removes the connection for user "Brian" and host %local_server_hostname%
     Then an account should be displayed with the displayname Alice Hansen and host %local_server_hostname%
 
