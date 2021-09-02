@@ -265,6 +265,15 @@ def build_client(ctx, c_compiler, cxx_compiler, build_type, generator, build_com
     ]
 
 def gui_tests_format():
+    trigger = {
+        "ref": [
+            "refs/heads/master",
+            "refs/heads/2.**",
+            "refs/tags/**",
+            "refs/pull/**",
+        ],
+    }
+
     return {
         "kind": "pipeline",
         "type": "docker",
@@ -280,6 +289,7 @@ def gui_tests_format():
                 ],
             },
         ],
+        "trigger": trigger,
     }
 
 def changelog(ctx, trigger = {}, depends_on = []):
