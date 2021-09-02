@@ -525,7 +525,7 @@ def showGuiTestResult():
         "image": "python",
         "pull": "always",
         "commands": [
-            "python /drone/src/test/gui/TestLogParser.py /drone/src/test/guiTestReport/reports.json",
+            "python /drone/src/test/gui/TestLogParser.py /drone/src/test/guiTestReport/results.json",
         ],
         "when": {
             "status": [
