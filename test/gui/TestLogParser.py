@@ -36,7 +36,8 @@ def traverse_loop(data):
 
                         failing_tests.append(test)
 
-    return failing_tests
+    # return unique node in the failing_tests
+    return map(dict, set(tuple(sorted(d.items())) for d in failing_tests))
 
 
 # Opening JSON file
