@@ -1,3 +1,5 @@
+# # Input parameters
+# name of the file that contains the data to be parsed
 import json
 import sys
 
@@ -36,26 +38,21 @@ def traverse_loop(data):
 
                         failing_tests.append(test)
 
-    # return unique node in the failing_tests
-    # return map(dict, set(tuple(sorted(d.items())) for d in failing_tests))
     return failing_tests
 
 
-# Opening JSON file
 f = open(str(sys.argv[1]))
 
-# returns JSON object as
-# a dictionary
+# returns JSON object as a dictionary
 data = json.load(f)
 
 # Traverse through the json file to look for failing tests
 failing_tests_raw = traverse_loop(data)
 
 # Remove duplicate nodes, if exists
+# This step is neccessary because sometimes the data in failing_tests_raw is redundent.
 failing_tests = [dict(y) for y in set(tuple(x.items()) for x in failing_tests_raw)]
 
-# print(failing_tests)
 print(json.dumps(failing_tests, indent=4, sort_keys=True))
 
-# Closing file
 f.close()

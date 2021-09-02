@@ -42,7 +42,7 @@ def main(ctx):
             trigger = build_trigger,
         ),
         gui_tests(ctx, trigger = build_trigger, filterTags = ["@smokeTest"], version = "latest"),
-        # gui_tests(ctx, trigger = build_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"], version = "latest"),
+        gui_tests(ctx, trigger = build_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"], version = "latest"),
         notification(
             name = "build",
             trigger = build_trigger,
@@ -72,7 +72,7 @@ def main(ctx):
             trigger = cron_trigger,
         ),
         gui_tests(ctx, trigger = cron_trigger, filterTags = ["@smokeTest"]),
-        # gui_tests(ctx, trigger = cron_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"]),
+        gui_tests(ctx, trigger = cron_trigger, depends_on = ["GUI-tests-@smokeTest"], filterTags = ["~@smokeTest"]),
     ]
 
     if ctx.build.event == "cron":
@@ -212,6 +212,7 @@ def gui_tests(ctx, trigger = {}, depends_on = [], filterTags = [], version = "da
                  setupServerAndApp(2) +
                  fixPermissions() +
                  owncloudLog() +
+                 setGuiTestReportDir() +
                  build_client(ctx, "gcc", "g++", "Debug", "Ninja", "ninja", build_dir) +
                  [
                      {
@@ -514,6 +515,15 @@ def fixPermissions():
         "commands": [
             "cd /drone/src/server",
             "chown www-data * -R",
+        ],
+    }]
+
+def setGuiTestReportDir():
+    return [{
+        "name": "create-gui-test-report-directory",
+        "image": "owncloud/ubuntu:16.04",
+        "pull": "always",
+        "commands": [
             "mkdir /drone/src/test/guiTestReport",
             "chmod ugo+rwx /drone/src/test/guiTestReport",
         ],
@@ -530,9 +540,6 @@ def showGuiTestResult():
         "when": {
             "status": [
                 "failure",
-            ],
-            "event": [
-                "pull_request",
             ],
         },
     }]
