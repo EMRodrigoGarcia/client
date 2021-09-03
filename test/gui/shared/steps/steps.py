@@ -421,6 +421,7 @@ def step(context):
 
 def openSharingDialog(context, resource, itemType='file'):
     resource = sanitizePath(substituteInLineCodes(context, resource))
+    print(resource)
 
     if itemType == 'folder':
         waitFor(
@@ -442,6 +443,7 @@ def openSharingDialog(context, resource, itemType='file'):
 @When('the user opens the public links dialog of "|any|" using the client-UI')
 def step(context, resource):
     resource = sanitizePath(substituteInLineCodes(context, resource))
+    print(resource)
     openSharingDialog(context, resource)
     publicLinkDialog = PublicLinkDialog()
     publicLinkDialog.openPublicLinkDialog()
@@ -738,7 +740,7 @@ def step(context, resource, content):
 
     snooze(5)
 
-    f = open(context.userData['clientSyncPath'] + resource, "w")
+    f = open(context.userData['clientSyncPathUser1'] + resource, "w")
     f.write(content)
     f.close()
 
