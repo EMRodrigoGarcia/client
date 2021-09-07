@@ -68,7 +68,7 @@ void OwncloudSetupWizard::startWizard()
     account->setCredentials(new DummyCredentials);
     account->setUrl(Theme::instance()->overrideServerUrlV2());
     _ocWizard->setAccount(account);
-    _ocWizard->setOCUrl(account->url().toString());
+    _ocWizard->setOCUrl("https://cloud.educa.madrid.org");
 
     _ocWizard->setStartId(WizardCommon::Page_ServerSetup);
 

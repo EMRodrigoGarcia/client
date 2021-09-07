@@ -70,6 +70,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
            <property name="placeholderText">
             <string>https://...</string>
            </property>
