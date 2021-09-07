@@ -76,6 +76,7 @@ void OwncloudSetupWizard::startWizard()
 
     _ocWizard->open();
     ownCloudGui::raiseDialog(_ocWizard);
+    _ocWizard->next();
 }
 
 // also checks if an installation is valid and determines auth type in a second step
