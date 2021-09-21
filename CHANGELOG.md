@@ -8,10 +8,73 @@ ownCloud admins and users.
 Summary
 -------
 
+* Bugfix - Mac multiple dialogs block all input: [#8421](https://github.com/owncloud/client/issues/8421)
+* Bugfix - Enforce rtl layout with rtl languages: [#8806](https://github.com/owncloud/client/issues/8806)
+* Bugfix - Tables now display local time: [#9006](https://github.com/owncloud/client/issues/9006)
+* Bugfix - We fixed a crash when using the retry action on an issue: [#9013](https://github.com/owncloud/client/issues/9013)
+* Bugfix - Fix crash when closing the client: [#9014](https://github.com/owncloud/client/issues/9014)
+* Bugfix - Crash on missing sync root: [#9016](https://github.com/owncloud/client/issues/9016)
+* Bugfix - A upgrade to 2.9 causes the usage of a new journal file: [#9019](https://github.com/owncloud/client/issues/9019)
 * Change - Make sharedialog preview be more resilient: [#8938](https://github.com/owncloud/client/issues/8938)
+* Enhancement - Display the error type in the issue protocol and allow filtering: [#9000](https://github.com/owncloud/client/issues/9000)
 
 Details
 -------
+
+* Bugfix - Mac multiple dialogs block all input: [#8421](https://github.com/owncloud/client/issues/8421)
+
+   We back ported a fix to a Qt bug which causes multiple dialogs on Mac to block all input.
+
+   https://github.com/owncloud/client/issues/8421
+   https://bugreports.qt.io/browse/QTBUG-91059
+   https://invent.kde.org/packaging/craft-blueprints-kde/-/commit/feca22a30f8d3a2122fd9b2097351fcb2da28543
+
+* Bugfix - Enforce rtl layout with rtl languages: [#8806](https://github.com/owncloud/client/issues/8806)
+
+   We fixed a bug where setting the language to a right to left language on mac did not change the
+   layout of the application.
+
+   https://github.com/owncloud/client/issues/8806
+   https://github.com/owncloud/client/pull/8981
+
+* Bugfix - Tables now display local time: [#9006](https://github.com/owncloud/client/issues/9006)
+
+   We fixed a bug where the sync tables where displaying utc time for some items.
+
+   https://github.com/owncloud/client/issues/9006
+
+* Bugfix - We fixed a crash when using the retry action on an issue: [#9013](https://github.com/owncloud/client/issues/9013)
+
+   Using the context menu action on a sync issue could cause a crash.
+
+   https://github.com/owncloud/client/issues/9013
+   https://github.com/owncloud/client/pull/9012
+
+* Bugfix - Fix crash when closing the client: [#9014](https://github.com/owncloud/client/issues/9014)
+
+   We fixed a crash where we crash when we closed the client during a sync.
+
+   https://github.com/owncloud/client/issues/9014
+
+* Bugfix - Crash on missing sync root: [#9016](https://github.com/owncloud/client/issues/9016)
+
+   We fixed an issue where the client crashed after a user deleted the sync root.
+
+   https://github.com/owncloud/client/issues/9016
+
+* Bugfix - A upgrade to 2.9 causes the usage of a new journal file: [#9019](https://github.com/owncloud/client/issues/9019)
+
+   We fixed a bug where the name of the sync journal was not properly saved to the settings. This
+   caused a bug when migration to 2.9, so a new a new sync journal was created.
+
+   This not only caused the loss of some selective sync settings, but also caused the display of the
+   following warning message:
+
+   ``` Multiple accounts are sharing the folder. This configuration is know to lead to dataloss
+   and is no longer supported. Please consider removing this folder from the account and adding it
+   again. ```
+
+   https://github.com/owncloud/client/issues/9019
 
 * Change - Make sharedialog preview be more resilient: [#8938](https://github.com/owncloud/client/issues/8938)
 
@@ -20,6 +83,12 @@ Details
 
    https://github.com/owncloud/client/issues/8938
    https://github.com/owncloud/client/pull/8939
+
+* Enhancement - Display the error type in the issue protocol and allow filtering: [#9000](https://github.com/owncloud/client/issues/9000)
+
+   We now display the error type in the not synced protocol and allow to filter by the error type.
+
+   https://github.com/owncloud/client/issues/9000
 
 Changelog for ownCloud Desktop Client [2.9.0] (2021-09-08)
 =======================================
@@ -39,6 +108,7 @@ Summary
 * Bugfix - Don't recommend non default sync option: [#8317](https://github.com/owncloud/client/issues/8317)
 * Bugfix - Limit min window size to 2/3 available: [#8366](https://github.com/owncloud/client/issues/8366)
 * Bugfix - Set up default locale correctly: [#8367](https://github.com/owncloud/client/issues/8367)
+* Bugfix - Only show the settings if they are explicitly requested on start: [#8590](https://github.com/owncloud/client/issues/8590)
 * Bugfix - Ignore consecutive errors for a pereiode of time: [#8672](https://github.com/owncloud/client/issues/8672)
 * Bugfix - Properly print the sync events in .owncloudsync.log: [#8729](https://github.com/owncloud/client/issues/8729)
 * Bugfix - Correctly handle file path comparison on Windows: [#8732](https://github.com/owncloud/client/issues/8732)
@@ -132,6 +202,13 @@ Details
    https://github.com/owncloud/client/issues/8367
    https://github.com/owncloud/client/pull/8541
    https://github.com/owncloud/client/pull/8617
+
+* Bugfix - Only show the settings if they are explicitly requested on start: [#8590](https://github.com/owncloud/client/issues/8590)
+
+   We now only display the settings when the user requested it on start and not every time the
+   application is started a second time.
+
+   https://github.com/owncloud/client/issues/8590
 
 * Bugfix - Ignore consecutive errors for a pereiode of time: [#8672](https://github.com/owncloud/client/issues/8672)
 

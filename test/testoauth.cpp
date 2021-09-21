@@ -175,7 +175,7 @@ public:
         OC_ASSERT(op == QNetworkAccessManager::PostOperation);
         OC_ASSERT(req.url().toString().startsWith(sOAuthTestServer.toString()));
         OC_ASSERT(req.url().path() == sOAuthTestServer.path() + "/index.php/apps/oauth2/api/v1/token");
-        std::unique_ptr<QBuffer> payload(new QBuffer());
+        auto payload = std::make_unique<QBuffer>();
         payload->setData(tokenReplyPayload());
         return new FakePostReply(op, req, std::move(payload), fakeQnam);
     }
@@ -187,7 +187,7 @@ public:
         OC_ASSERT(op == QNetworkAccessManager::GetOperation);
         OC_ASSERT(req.url().toString().startsWith(sOAuthTestServer.toString()));
         OC_ASSERT(req.url().path() == sOAuthTestServer.path() + "/status.php");
-        std::unique_ptr<QBuffer> payload(new QBuffer());
+        auto payload = std::make_unique<QBuffer>();
         payload->setData(statusPhpPayload());
         return new FakePostReply(op, req, std::move(payload), fakeQnam);
     }
@@ -290,7 +290,7 @@ private slots:
                 OC_ASSERT(state == BrowserOpened);
                 state = TokenAsked;
 
-                std::unique_ptr<QBuffer> payload(new QBuffer);
+                auto payload = std::make_unique<QBuffer>();
                 payload->setData(tokenReplyPayload());
                 return new SlowFakePostReply(op, req, std::move(payload), fakeQnam);
             }
@@ -414,6 +414,9 @@ private slots:
 
             void oauthResult(OAuth::Result result, const QString &user, const QString &token, const QString &refreshToken) override
             {
+                Q_UNUSED(user);
+                Q_UNUSED(token);
+
                 QCOMPARE(state, StartState);
                 QCOMPARE(result, OAuth::Error);
                 gotAuthOk = true;
