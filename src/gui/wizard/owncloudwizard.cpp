@@ -124,7 +124,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
 bool OwncloudWizard::hasConnectivity() {
     QTcpSocket* sock = new QTcpSocket(this);
     //reemplazar enlace a google 
-    sock->connectToHost("www.google.com", 80);
+    sock->connectToHost("www.educa2.madrid.org", 80);
     bool connected = sock->waitForConnected(1000);//ms
 
     if (!connected)
