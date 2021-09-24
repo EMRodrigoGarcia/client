@@ -36,6 +36,10 @@
 #include <QMessageBox>
 #include <owncloudgui.h>
 
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QTcpSocket>
+
 #include <stdlib.h>
 
 namespace {
@@ -92,7 +96,23 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     setWindowTitle(tr("%1 Connection Wizard").arg(theme->appNameGUI()));
     setWizardStyle(QWizard::ModernStyle);
     setPixmap(QWizard::BannerPixmap, theme->wizardHeaderBanner({ width(), 78 }));
-    setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
+
+    // EducaMadrid
+
+    // setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
+
+    if (hasConnectivity()) {
+        QNetworkAccessManager *nam = new QNetworkAccessManager(this);
+        connect(nam, &QNetworkAccessManager::finished, this, &OwncloudWizard::downloadFinished);
+        const QUrl url = QUrl("https://cloud.educa.madrid.org/educamadrid/img/cloud_xl.png?v=2020");
+        QNetworkRequest request(url);
+        nam->get(request);
+    }else {
+        
+        setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
+    }
+
+    // EducaMadrid
     setOption(QWizard::NoBackButtonOnStartPage);
     setOption(QWizard::NoBackButtonOnLastPage);
     setOption(QWizard::NoCancelButton, false);
@@ -100,6 +120,30 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     setTitleFormat(Qt::RichText);
     setSubTitleFormat(Qt::RichText);
 }
+// EducaMadrid
+bool OwncloudWizard::hasConnectivity() {
+    QTcpSocket* sock = new QTcpSocket(this);
+    //reemplazar enlace a google 
+    sock->connectToHost("www.google.com", 80);
+    bool connected = sock->waitForConnected(1000);//ms
+
+    if (!connected)
+    {
+        sock->abort();
+        return false;
+    }
+    sock->close();
+    return true;
+}
+
+void OwncloudWizard::downloadFinished(QNetworkReply *reply) {
+    QPixmap pm;
+    pm.loadFromData(reply->readAll());
+    setPixmap(QWizard::LogoPixmap, pm);
+
+    reply->deleteLater();
+}
+// EducaMadrid
 
 void OwncloudWizard::setAccount(AccountPtr account)
 {

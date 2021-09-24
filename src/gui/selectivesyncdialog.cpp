@@ -32,7 +32,6 @@
 
 namespace OCC {
 
-
 class SelectiveSyncTreeViewItem : public QTreeWidgetItem
 {
 public:

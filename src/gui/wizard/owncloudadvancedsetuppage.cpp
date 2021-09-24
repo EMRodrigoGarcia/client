@@ -34,6 +34,11 @@
 #include "networkjobs.h"
 #include "guiutility.h"
 
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QTcpSocket>
+
+
 namespace OCC {
 
 OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
@@ -68,9 +73,25 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
 
     connect(_ui.rSyncEverything, &QRadioButton::toggled, _ui.syncEverythingWidget, &QWidget::setEnabled);
     connect(_ui.rManualFolder, &QRadioButton::toggled, _ui.whereToSyncWidget, &QWidget::setDisabled);
+    
+    // EducaMadrid
 
-    QIcon appIcon = theme->applicationIcon();
-    _ui.lServerIcon->setPixmap(appIcon.pixmap(_ui.lServerIcon->size()));
+    // QIcon appIcon = theme->applicationIcon();
+    // _ui.lServerIcon->setPixmap(appIcon.pixmap(_ui.lServerIcon->size()));
+
+    if (hasConnectivity()) {
+        QNetworkAccessManager *nam = new QNetworkAccessManager(this);
+        connect(nam, &QNetworkAccessManager::finished, this, &OwncloudAdvancedSetupPage::downloadFinished);
+        const QUrl url = QUrl("https://cloud.educa.madrid.org/educamadrid/img/cloud_xl.png?v=2020");
+        QNetworkRequest request(url);
+        nam->get(request);
+    }else {
+        QIcon appIcon = theme->applicationIcon();
+        _ui.lServerIcon->setPixmap(appIcon.pixmap(_ui.lServerIcon->size()));
+    }
+
+    // EducaMadrid
+
     if (theme->wizardHideExternalStorageConfirmationCheckbox()) {
         _ui.confCheckBoxExternal->hide();
     }
@@ -94,6 +115,35 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
         }
     });
 }
+
+//EducaMadrid
+
+bool OwncloudAdvancedSetupPage::hasConnectivity() {
+    QTcpSocket* sock = new QTcpSocket(this);
+    //reemplazar enlace a google 
+    sock->connectToHost("www.google.com", 80);
+    bool connected = sock->waitForConnected(1000);//ms
+
+    if (!connected)
+    {
+        sock->abort();
+        return false;
+    }
+    sock->close();
+    return true;
+}
+
+void OwncloudAdvancedSetupPage::downloadFinished(QNetworkReply *reply) {
+    QPixmap pm;
+    pm.loadFromData(reply->readAll());
+    
+    _ui.lServerIcon->setPixmap(pm);
+
+
+    reply->deleteLater();
+}
+
+// EducaMadrid
 
 bool OwncloudAdvancedSetupPage::isComplete() const
 {

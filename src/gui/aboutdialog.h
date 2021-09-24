@@ -15,6 +15,8 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
+#include <QNetworkReply>
+
 
 
 namespace OCC {
@@ -34,6 +36,8 @@ public:
 private:
     void openBrowser(const QString &s);
     void openBrowserFromUrl(const QUrl &s);
+    void downloadFinished(QNetworkReply *reply);
+    bool hasConnectivity();
 
 private:
     Ui::AboutDialog *ui;

@@ -24,6 +24,7 @@
 #include "networkjobs.h"
 #include "wizard/owncloudwizardcommon.h"
 #include "accountfwd.h"
+#include <QNetworkReply>
 
 namespace OCC {
 
@@ -57,6 +58,9 @@ public:
 
     void displayError(const QString &);
     AbstractCredentials *getCredentials() const;
+
+    void downloadFinished(QNetworkReply *reply);
+    bool hasConnectivity();
 
     /**
      * Shows a dialog explaining the virtual files mode and warning about it

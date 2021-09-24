@@ -22,6 +22,9 @@
 #include "wizard/abstractcredswizardpage.h"
 #include "wizard/owncloudwizardcommon.h"
 
+#include <QDialog>
+#include <QNetworkReply>
+
 class QProgressIndicator;
 
 namespace OCC {
@@ -46,6 +49,9 @@ public:
     void setRemoteFolder(const QString &remoteFolder);
     void setMultipleFoldersExist(bool exist);
     void directoriesCreated();
+
+    void downloadFinished(QNetworkReply *reply);
+    bool hasConnectivity();
 
 public slots:
     void setErrorString(const QString &);
