@@ -35,9 +35,9 @@ Updater *Updater::_instance = nullptr;
 
 Updater *Updater::instance()
 {
-    if (!_instance) {
+    /*if (!_instance) {
         _instance = create();
-    }
+    }*/
     return _instance;
 }
 
