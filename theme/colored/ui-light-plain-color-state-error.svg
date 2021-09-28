@@ -1,12 +1,94 @@
-<svg width="512" height="512" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M28.8055 12.498C28.5515 9.994 26.4905 8.042 23.9855 8.042C23.9595 8.042 23.9355 8.044 23.9115 8.044C23.8365 5.567 21.8605 3.582 19.4295 3.582C19.2475 3.582 19.0685 3.595 18.8915 3.616C18.4515 1.548 16.6585 0 14.5125 0C12.7495 0 11.2265 1.044 10.4935 2.563C10.0755 2.222 9.5485 2.018 8.9735 2.018C7.6215 2.018 6.5255 3.144 6.5255 4.532C6.5255 5.073 6.6935 5.573 6.9765 5.983C6.0145 6.601 5.2785 7.556 4.9255 8.687C4.7805 8.673 4.6335 8.665 4.4845 8.665C2.0075 8.665 -0.000499725 10.727 -0.000499725 13.27C-0.000499725 15.814 2.0075 18 4.4845 18H9.0725C10.9245 15.006 14.2275 13 17.9995 13C21.7715 13 25.0755 15.006 26.9275 18H29.4355C30.8515 18 31.9995 16.503 31.9995 15.049C31.9995 13.594 30.8515 12.415 29.4355 12.415C29.2175 12.415 29.0075 12.446 28.8055 12.498Z" fill="#041E42"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M26.5 23.4995C26.5 28.1934 22.6939 31.9985 18 31.9985C13.3061 31.9985 9.5 28.1934 9.5 23.4995C9.5 18.8051 13.3061 15 18 15C22.6939 15 26.5 18.8051 26.5 23.4995Z" fill="#B23015"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M21.8277 18.3231L17.979 22.1723L14.1303 18.3234L12.8234 19.6303L16.6723 23.4792L12.8234 27.3279L14.1727 28.6769L18.0216 24.828L21.8706 28.6769L23.1767 27.3702L19.3283 23.5213L23.177 19.6724L21.8277 18.3231Z" fill="white" stroke="#981D05" stroke-width="0.25"/>
-</g>
-<defs>
-<clipPath id="clip0">
-<rect width="32" height="32" fill="white"/>
-</clipPath>
-</defs>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 32 32"
+   fill="none"
+   version="1.1"
+   id="svg3404"
+   sodipodi:docname="ui-light-plain-color-state-error.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3406"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.890625"
+     inkscape:cx="255.4386"
+     inkscape:cy="256"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3404" />
+  <defs
+     id="defs3402">
+    <clipPath
+       id="clip0">
+      <rect
+         width="32"
+         height="32"
+         fill="white"
+         id="rect3399" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4347">
+      <circle
+         style="display:none;fill:#ff0000;fill-opacity:1;stroke-width:0.193737"
+         id="circle4349"
+         cx="17.999962"
+         cy="23.499962"
+         r="10.455049"
+         d="M 28.45501,23.499962 A 10.455049,10.455049 0 0 1 17.999962,33.95501 10.455049,10.455049 0 0 1 7.5449133,23.499962 10.455049,10.455049 0 0 1 17.999962,13.044913 10.455049,10.455049 0 0 1 28.45501,23.499962 Z" />
+      <path
+         id="lpe_path-effect4351"
+         style="fill:#ff0000;fill-opacity:1;stroke-width:0.193737"
+         class="powerclip"
+         d="M -5,-5 H 36.999606 V 26.33307 H -5 Z M 28.45501,23.499962 A 10.455049,10.455049 0 0 0 17.999962,13.044913 10.455049,10.455049 0 0 0 7.5449133,23.499962 10.455049,10.455049 0 0 0 17.999962,33.95501 10.455049,10.455049 0 0 0 28.45501,23.499962 Z" />
+    </clipPath>
+    <inkscape:path-effect
+       effect="powerclip"
+       id="path-effect4351"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false"
+       message="Utilice la regla de relleno parimpar en el diálogo &lt;b&gt;Relleno y borde&lt;/b&gt; si el resultado no está aplanada después de convertir el recorte en trayectos." />
+  </defs>
+  <g
+     id="g3624">
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="m 26.5,23.4995 c 0,4.6939 -3.8061,8.499 -8.5,8.499 -4.6939,0 -8.5,-3.8051 -8.5,-8.499 C 9.5,18.8051 13.3061,15 18,15 c 4.6939,0 8.5,3.8051 8.5,8.4995 z"
+       fill="#b23015"
+       id="path3393" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="m 21.8277,18.3231 -3.8487,3.8492 -3.8487,-3.8489 -1.3069,1.3069 3.8489,3.8489 -3.8489,3.8487 1.3493,1.349 3.8489,-3.8489 3.849,3.8489 1.3061,-1.3067 -3.8484,-3.8489 3.8487,-3.8489 z"
+       fill="#ffffff"
+       stroke="#981d05"
+       stroke-width="0.25"
+       id="path3395" />
+    <path
+       d="M 25.799682,8.053234 C 24.893027,3.453291 20.853076,0 15.999803,0 12.146517,0 8.799891,2.18664 7.133245,5.3866 3.119961,5.813262 0,9.21322 0,13.333169 0,17.746448 3.586622,21.33307 7.999901,21.33307 h 17.33312 c 3.679955,0 6.666585,-2.986629 6.666585,-6.666584 0,-3.519957 -2.7333,-6.373255 -6.199924,-6.613252 z"
+       id="path121"
+       style="fill:#041e42;fill-opacity:1;stroke-width:1.33332"
+       clip-path="url(#clipPath4347)"
+       inkscape:path-effect="#path-effect4351"
+       inkscape:original-d="M 25.799682,8.053234 C 24.893027,3.453291 20.853076,0 15.999803,0 12.146517,0 8.799891,2.18664 7.133245,5.3866 3.119961,5.813262 0,9.21322 0,13.333169 0,17.746448 3.586622,21.33307 7.999901,21.33307 h 17.33312 c 3.679955,0 6.666585,-2.986629 6.666585,-6.666584 0,-3.519957 -2.7333,-6.373255 -6.199924,-6.613252 z"
+       transform="translate(1.97e-4)" />
+  </g>
 </svg>

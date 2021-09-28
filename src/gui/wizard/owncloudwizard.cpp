@@ -99,9 +99,9 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
 
     // EducaMadrid
 
-    // setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
+     setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
 
-    if (hasConnectivity()) {
+    /*if (hasConnectivity()) {
         QNetworkAccessManager *nam = new QNetworkAccessManager(this);
         connect(nam, &QNetworkAccessManager::finished, this, &OwncloudWizard::downloadFinished);
         const QUrl url = QUrl("https://cloud.educa.madrid.org/educamadrid/img/cloud_xl.png?v=2020");
@@ -110,7 +110,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     }else {
         
         setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
-    }
+    }*/
 
     // EducaMadrid
     setOption(QWizard::NoBackButtonOnStartPage);
