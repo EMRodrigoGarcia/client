@@ -36,7 +36,8 @@ ownCloudTheme::ownCloudTheme()
 #ifndef TOKEN_AUTH_ONLY
 QColor ownCloudTheme::wizardHeaderBackgroundColor() const
 {
-    return QColor(4, 30, 66);
+    // return QColor(4, 30, 66);
+    return QColor(38, 43, 55);
 }
 
 QColor ownCloudTheme::wizardHeaderTitleColor() const
