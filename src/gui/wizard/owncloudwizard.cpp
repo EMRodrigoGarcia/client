@@ -104,7 +104,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     if (hasConnectivity()) {
         QNetworkAccessManager *nam = new QNetworkAccessManager(this);
         connect(nam, &QNetworkAccessManager::finished, this, &OwncloudWizard::downloadFinished);
-        const QUrl url = QUrl("https://avisos.educa.madrid.org/public/logos/footer/ptD.png");
+        const QUrl url = QUrl("https://avisos.educa.madrid.org/public/logos/footer/dark/pt.png");
         QNetworkRequest request(url);
         nam->get(request);
     }else {
