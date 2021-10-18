@@ -79,7 +79,7 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
     // QIcon appIcon = theme->applicationIcon();
     // _ui.lServerIcon->setPixmap(appIcon.pixmap(_ui.lServerIcon->size()));
 
-    /*if (hasConnectivity()) {
+    if (hasConnectivity()) {
         QNetworkAccessManager *nam = new QNetworkAccessManager(this);
         connect(nam, &QNetworkAccessManager::finished, this, &OwncloudAdvancedSetupPage::downloadFinished);
         const QUrl url = QUrl("https://cloud.educa.madrid.org/educamadrid/img/cloud_xl.png?v=2020");
@@ -88,10 +88,8 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage()
     }else {
         QIcon appIcon = theme->applicationIcon();
         _ui.lServerIcon->setPixmap(appIcon.pixmap(_ui.lServerIcon->size()));
-    }*/
-    QIcon appIcon = theme->applicationIcon();
-    _ui.lServerIcon->setPixmap(appIcon.pixmap(_ui.lServerIcon->size()));
-
+    }
+    
     // EducaMadrid
 
     if (theme->wizardHideExternalStorageConfirmationCheckbox()) {

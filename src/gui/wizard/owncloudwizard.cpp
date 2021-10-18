@@ -101,7 +101,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
 
     // setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
 
-    /*if (hasConnectivity()) {
+    if (hasConnectivity()) {
         QNetworkAccessManager *nam = new QNetworkAccessManager(this);
         connect(nam, &QNetworkAccessManager::finished, this, &OwncloudWizard::downloadFinished);
         const QUrl url = QUrl("https://avisos.educa.madrid.org/public/logos/footer/dark/pt.png");
@@ -110,9 +110,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     }else {
         
         setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
-    }*/
-
-    setPixmap(QWizard::LogoPixmap, theme->wizardHeaderLogo().pixmap(132, 63));
+    }
 
 
     // EducaMadrid

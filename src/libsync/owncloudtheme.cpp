@@ -36,8 +36,11 @@ ownCloudTheme::ownCloudTheme()
 #ifndef TOKEN_AUTH_ONLY
 QColor ownCloudTheme::wizardHeaderBackgroundColor() const
 {
-    return QColor(4, 30, 66);
-    // return QColor(38, 43, 55);
+    /* ************** EducaMadrid ************* */
+    // return QColor(4, 30, 66);z
+    return QColor(38, 43, 55);
+    /* ************** EducaMadrid ************* */
+    
 }
 
 QColor ownCloudTheme::wizardHeaderTitleColor() const
