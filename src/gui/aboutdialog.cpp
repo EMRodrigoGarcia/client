@@ -35,7 +35,7 @@ AboutDialog::AboutDialog(QWidget *parent)
     // ui->icon->setPixmap(Theme::instance()->aboutIcon().pixmap(256));
 
 // EducaMadrid
-    if (hasConnectivity()) {
+    /*if (hasConnectivity()) {
         QNetworkAccessManager *nam = new QNetworkAccessManager(this);
         connect(nam, &QNetworkAccessManager::finished, this, &AboutDialog::downloadFinished);
         const QUrl url = QUrl("https://avisos.educa.madrid.org/public/logos/footer/pt.png");
@@ -43,7 +43,8 @@ AboutDialog::AboutDialog(QWidget *parent)
         nam->get(request);
     }else {
         ui->icon->setPixmap(Theme::instance()->aboutIcon().pixmap(256));
-    }
+    }*/
+    ui->icon->setPixmap(Theme::instance()->aboutIcon().pixmap(256));
 // EducaMadrid
     ui->versionInfo->setText(Theme::instance()->aboutVersions(Theme::VersionFormat::RichText));
 
