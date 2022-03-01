@@ -1,3 +1,10 @@
+Buildear en Windows
+- Install Craft
+- Descargar NSIS (choco install nsis)
+- Volcar el contenido de la carpeta C:\CraftRoot\build\archive\... y los .exe modificados en el escritorio, junto con el archivo owncloud-client.nsi
+- Correr el script .nsi
+
+
 # ownCloud Desktop Client
 
 [![Build Status](https://drone.owncloud.com/api/badges/owncloud/client/status.svg)](https://drone.owncloud.com/owncloud/client) [![Build Status](https://github.com/owncloud/client/workflows/ownCloud%20CI/badge.svg)](https://github.com/owncloud/client/actions)

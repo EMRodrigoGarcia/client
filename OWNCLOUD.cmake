@@ -1,5 +1,5 @@
 set( APPLICATION_NAME       "CloudEducaMadrid" )
-set( APPLICATION_SHORTNAME  "ownCloud" )
+set( APPLICATION_SHORTNAME  "CloudEducaMadrid" )
 set( APPLICATION_EXECUTABLE "cloudeducamadrid" )
 set( APPLICATION_DOMAIN     "cloud.educa.madrid.org" )
 set( APPLICATION_VENDOR     "CloudEducaMadrid" )
@@ -7,7 +7,7 @@ set( APPLICATION_UPDATE_URL "https://updates.owncloud.com/client/" CACHE STRING 
 set( APPLICATION_ICON_NAME  "owncloud" )
 set( APPLICATION_VIRTUALFILE_SUFFIX "owncloud" CACHE STRING "Virtual file suffix (not including the .)")
 
-set( LINUX_PACKAGE_SHORTNAME "cloudeducamadrid" )
+set( LINUX_PACKAGE_SHORTNAME "owncloud" )
 
 set( THEME_CLASS            "ownCloudTheme" )
 set( APPLICATION_REV_DOMAIN "com.owncloud.desktopclient" )
